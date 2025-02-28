@@ -1,291 +1,358 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ashish Cycle Workshop - Professional Bike Repairs</title>
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <!-- AOS Animation CSS -->
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-  <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-  <style>
-    :root {
-      --primary: #1c1c1c;   /* Dark tone matching your images */
-      --secondary: #E74C3C; /* Vibrant Red */
-    }
-    body {
-      font-family: Arial, sans-serif;
-    }
-    .hero {
-      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
-                  url('https://source.unsplash.com/BRDO4C-0h_s');
-      height: 90vh;
-      background-size: cover;
-      background-position: center;
-    }
-    .service-card {
-      transition: transform 0.3s, box-shadow 0.3s;
-      border: none;
-    }
-    .service-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-    }
-    .map-container {
-      border-radius: 15px;
-      overflow: hidden;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-    }
-    .review-stars {
-      color: var(--secondary);
-    }
-    .floating-btn {
-      position: fixed;
-      bottom: 30px;
-      z-index: 1000;
-      animation: float 3s ease-in-out infinite;
-    }
-    /* Floating WhatsApp button (Bottom Right) */
-    .floating-btn.whatsapp-btn {
-      right: 30px;
-    }
-    /* Floating Booking button (Bottom Left) */
-    .floating-btn.booking-btn {
-      left: 30px;
-      right: auto;
-    }
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-15px); }
-    }
-    .section-title {
-      position: relative;
-      padding-bottom: 15px;
-      margin-bottom: 40px;
-    }
-    .section-title::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 80px;
-      height: 3px;
-      background: var(--secondary);
-    }
-    /* Button styling: curved borders and tap animation */
-    .btn {
-      border-radius: 25px !important;
-      transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-    }
-    .btn:active {
-      transform: scale(0.95);
-      box-shadow: 0 0 10px rgba(0,0,0,0.2);
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ashish Cycle Workshop - Professional Bike Repairs</title>
+    <meta name="description" content="Professional bicycle repair services in Bettiah. Book same-day service, emergency repairs, and quality maintenance. Open 7 days a week.">
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Ashish Cycle Workshop - Professional Bike Repairs">
+    <meta property="og:image" content="img/og-image.jpg">
+    <!-- Preconnects -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://maps.googleapis.com">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- AOS Animation CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #1c1c1c;
+            --secondary: #E74C3C;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
+                        url('img/hero-bg.jpg');
+            height: 90vh;
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+        }
+
+        #contact {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
+                        url('img/contact-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+        }
+
+        #services {
+            background: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)),
+                        url('img/services-bg.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .service-card {
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: none;
+            background: #fff;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 400px;
+            border: 0;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .floating-btn {
+            position: fixed;
+            bottom: 30px;
+            z-index: 1000;
+            animation: float 3s ease-in-out infinite;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        .section-title {
+            position: relative;
+            padding-bottom: 15px;
+            margin-bottom: 40px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--secondary);
+        }
+
+        .btn {
+            border-radius: 25px;
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .btn:active {
+            transform: scale(0.95);
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                height: 70vh;
+            }
+            .navbar-collapse {
+                background: rgba(0,0,0,0.9);
+                padding: 20px;
+                margin-top: 10px;
+                border-radius: 5px;
+            }
+        }
+    </style>
 </head>
 <body>
-  <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-    <div class="container">
-      <a class="navbar-brand" href="#">
-        <i class="fas fa-bicycle me-2"></i>Ashish Cycle Workshop
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
-          <li class="nav-item"><a class="nav-link" href="#booking">Booking</a></li>
-          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-
-  <!-- Hero Section -->
-  <section id="home" class="hero d-flex align-items-center text-white">
-    <div class="container text-center" data-aos="zoom-in">
-      <h1 class="display-3 mb-4">Professional Bike Repairs</h1>
-      <p class="lead mb-4">Fast &amp; Reliable Service Guaranteed</p>
-      <div class="d-flex gap-3 justify-content-center">
-        <!-- This button scrolls to the booking section -->
-        <a href="#booking" class="btn btn-primary btn-lg px-5">Book Now</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Services Section -->
-  <section id="services" class="py-5 bg-light">
-    <div class="container">
-      <h2 class="text-center section-title mb-5" data-aos="fade-up">Our Services</h2>
-      <div class="row g-4">
-        <!-- Service Card 1 -->
-        <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
-          <div class="card service-card h-100">
-            <img src="https://source.unsplash.com/RSB38i67lko" class="card-img-top" alt="Full Tune-Up">
-            <div class="card-body text-center">
-              <h3 class="card-title">Full Tune-Up</h3>
-              <p class="card-text">Complete bike overhaul including gear adjustments and brake servicing</p>
-              <div class="badge bg-primary">₹59.99</div>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-bicycle me-2"></i>Ashish Cycle Workshop
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#booking">Booking</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#reviews">Reviews</a></li>
+                </ul>
             </div>
-          </div>
         </div>
-        <!-- Service Card 2 -->
-        <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
-          <div class="card service-card h-100">
-            <img src="https://source.unsplash.com/gOHfFgwyDNM" class="card-img-top" alt="Wheel Repair">
-            <div class="card-body text-center">
-              <h3 class="card-title">Wheel Repair</h3>
-              <p class="card-text">Precision wheel repair and replacement services</p>
-              <div class="badge bg-primary">₹29.99</div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero d-flex align-items-center">
+        <div class="container text-center" data-aos="zoom-in">
+            <h1 class="display-4 mb-4">Professional Bike Repairs</h1>
+            <p class="lead mb-4">Fast & Reliable Service Guaranteed</p>
+            <a href="#booking" class="btn btn-primary btn-lg px-5">Book Now</a>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-5">
+        <div class="container">
+            <h2 class="section-title text-center mb-5" data-aos="fade-up">Find Us</h2>
+            <div class="row g-4">
+                <div class="col-md-6" data-aos="fade-right">
+                    <div class="map-container">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3561.1392136336094!2d84.52230677514132!3d26.8036955647676!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3993694f300f42f3%3A0xddae9c7dd5a46328!2sASHISH%20CYCLE%20WORKSHOP!5e0!3m2!1sen!2sin!4v1740732887781!5m2!1sen!2sin" 
+                                allowfullscreen="" 
+                                loading="lazy" 
+                                referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+                <div class="col-md-6" data-aos="fade-left">
+                    <h3 class="mb-4">Contact Details</h3>
+                    <ul class="list-unstyled">
+                        <li class="mb-3">
+                            <i class="fas fa-map-marker-alt me-2"></i>
+                            IN EAST OF BANK OF BARODA, NH-727, STATION CHOCK,<br>
+                            Saraswati Nagar, Banuchapar, Bettiah,<br>
+                            Ujjain Tola, Bihar 845438
+                        </li>
+                        <li class="mb-3">
+                            <i class="fas fa-phone me-2"></i>
+                            <a href="tel:7903157520" class="text-white">7903157520</a>
+                        </li>
+                        <li class="mb-3">
+                            <i class="fas fa-envelope me-2"></i>
+                            <a href="mailto:herashish.contact@gmail.com" class="text-white">herashish.contact@gmail.com</a>
+                        </li>
+                    </ul>
+                    <div class="text-center mt-5" data-aos="fade-up">
+                        <a href="https://forms.gle/EKX21cV58rHtDW328" 
+                           class="btn btn-light btn-lg" target="_blank">
+                           Submit Complaint
+                        </a>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-        <!-- Service Card 3 -->
-        <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
-          <div class="card service-card h-100">
-            <img src="https://source.unsplash.com/8XJz2KVafV8" class="card-img-top" alt="Brake Adjustment">
-            <div class="card-body text-center">
-              <h3 class="card-title">Brake Adjustment</h3>
-              <p class="card-text">Expert brake adjustments for a safer ride</p>
-              <div class="badge bg-primary">₹19.99</div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-5">
+        <div class="container">
+            <h2 class="section-title text-center mb-5" data-aos="fade-up">Our Services</h2>
+            <div class="row g-4">
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card service-card h-100">
+                        <div class="card-body text-center">
+                            <div class="service-icon mb-3">
+                                <i class="fas fa-tools fa-2x text-secondary"></i>
+                            </div>
+                            <h3 class="h4">Full Tune-Up</h3>
+                            <p>Complete bike overhaul including gear adjustments</p>
+                            <div class="price-tag bg-secondary text-white py-1 px-3 rounded-pill">
+                                ₹59.99
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card service-card h-100">
+                        <div class="card-body text-center">
+                            <div class="service-icon mb-3">
+                                <i class="fas fa-bicycle fa-2x text-secondary"></i>
+                            </div>
+                            <h3 class="h4">Wheel Repair</h3>
+                            <p>Precision wheel repair and replacement</p>
+                            <div class="price-tag bg-secondary text-white py-1 px-3 rounded-pill">
+                                ₹29.99
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card service-card h-100">
+                        <div class="card-body text-center">
+                            <div class="service-icon mb-3">
+                                <i class="fas fa-stop-circle fa-2x text-secondary"></i>
+                            </div>
+                            <h3 class="h4">Brake Service</h3>
+                            <p>Expert brake adjustments and replacements</p>
+                            <div class="price-tag bg-secondary text-white py-1 px-3 rounded-pill">
+                                ₹19.99
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Booking Section -->
-  <section id="booking" class="py-5">
-    <div class="container">
-      <h2 class="text-center section-title mb-5" data-aos="fade-up">Book Service</h2>
-      <div class="text-center" data-aos="fade-up">
-        <!-- This button opens your Google Forms booking link in a new tab -->
-        <a href="https://forms.gle/VRVwhW7xzcBpa1tf8" class="btn btn-primary btn-lg px-5" target="_blank">Book Now</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact & Map Section -->
-  <section id="contact" class="py-5 bg-dark text-white">
-    <div class="container">
-      <h2 class="text-center section-title mb-5" data-aos="fade-up">Find Us</h2>
-      <div class="row g-5">
-        <div class="col-md-6" data-aos="fade-right">
-          <div class="map-container">
-            <!-- Google Map Embed -->
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3561.1392136336094!2d84.52230677514132!3d26.8036955647676!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3993694f300f42f3%3A0xddae9c7dd5a46328!2sASHISH%20CYCLE%20WORKSHOP!5e0!3m2!1sen!2sin!4v1740732887781!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-          </div>
+    <!-- Booking Section -->
+    <section id="booking" class="py-5 bg-dark text-white">
+        <div class="container text-center">
+            <h2 class="section-title mb-5" data-aos="fade-up">Book Service</h2>
+            <p class="lead mb-4" data-aos="fade-up">Fast and easy online booking</p>
+            <a href="https://forms.gle/VRVwhW7xzcBpa1tf8" 
+               class="btn btn-primary btn-lg px-5"
+               target="_blank"
+               data-aos="zoom-in">
+               Book Now
+            </a>
         </div>
-        <div class="col-md-6" data-aos="fade-left">
-          <h3 class="mb-4">Contact Details</h3>
-          <ul class="list-unstyled">
-            <li class="mb-3">
-              <i class="fas fa-map-marker-alt me-2"></i>
-              IN EAST OF BANK OF BARODA, NH-727, STATION CHOCK, Saraswati Nagar, Banuchapar, Bettiah, Ujjain Tola, Bihar 845438
-            </li>
-            <li class="mb-3">
-              <i class="fas fa-phone me-2"></i>
-              <a href="tel:7903157520" class="text-white">7903157520</a>
-            </li>
-            <li class="mb-3">
-              <i class="fas fa-envelope me-2"></i>
-              <a href="mailto:herashish.contact@gmail.com" class="text-white">herashish.contact@gmail.com</a>
-            </li>
-          </ul>
-          <h4 class="mt-5 mb-3">Complaints</h4>
-          <div class="text-center" data-aos="fade-up">
-            <a href="https://forms.gle/EKX21cV58rHtDW328" class="btn btn-light btn-lg">Submit Complaint</a>
-          </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section id="reviews" class="py-5 bg-light">
+        <div class="container text-center">
+            <h2 class="section-title mb-5" data-aos="fade-up">Customer Reviews</h2>
+            <p class="lead mb-4" data-aos="fade-up">Share your experience with others</p>
+            <a href="https://g.page/r/CShjpNV9nK7dEBM/review" 
+               class="btn btn-primary btn-lg px-5"
+               target="_blank"
+               data-aos="zoom-in">
+               <i class="fab fa-google me-2"></i>Write Review
+            </a>
         </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Reviews Section -->
-  <section class="py-5 bg-light">
-    <div class="container text-center">
-      <h2 class="section-title mb-5" data-aos="fade-up">Love Our Service?</h2>
-      <p class="lead mb-4" data-aos="fade-up">Help others discover us by leaving a review</p>
-      <a href="https://g.page/r/CShjpNV9nK7dEBM/review" 
-         class="btn btn-primary btn-lg px-5" 
-         target="_blank"
-         data-aos="zoom-in">
-         <i class="fab fa-google me-2"></i>Write a Review
-      </a>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="bg-black text-white py-4">
-    <div class="container">
-      <div class="row g-4">
-        <div class="col-md-4">
-          <h5>Ashish Cycle Workshop</h5>
-          <p class="text-muted">Professional bike repairs since 2010</p>
+    <!-- Footer -->
+    <footer class="bg-black text-white py-4">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <h5>Ashish Cycle Workshop</h5>
+                    <p class="text-muted">Quality repairs since 2010</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#contact" class="text-white">Contact</a></li>
+                        <li><a href="#services" class="text-white">Services</a></li>
+                        <li><a href="#booking" class="text-white">Booking</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Connect</h5>
+                    <div class="social-links">
+                        <a href="https://instagram.com/ashishmaurya.17" 
+                           class="text-white me-3"
+                           target="_blank"
+                           aria-label="Instagram">
+                           <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-4">
+                <p class="mb-0">&copy; <span id="currentYear"></span> Ashish Cycle Workshop</p>
+            </div>
         </div>
-        <div class="col-md-4">
-          <h5>Quick Links</h5>
-          <ul class="list-unstyled">
-            <li><a href="#services" class="text-white">Services</a></li>
-            <li><a href="#booking" class="text-white">Booking</a></li>
-            <li><a href="#contact" class="text-white">Contact</a></li>
-          </ul>
-        </div>
-        <div class="col-md-4">
-          <h5>Connect</h5>
-          <div class="social-links">
-            <a href="https://instagram.com/ashishmaurya.17" class="text-white me-3"><i class="fab fa-instagram"></i></a>
-          </div>
-        </div>
-      </div>
-      <div class="text-center mt-4">
-        <p class="mb-0">&copy; 2025 Ashish Cycle Workshop. All rights reserved.</p>
-      </div>
-    </div>
-  </footer>
+    </footer>
 
-  <!-- Floating WhatsApp Button (Bottom Right) -->
-  <a href="https://wa.me/7903157520" 
-     class="floating-btn whatsapp-btn btn btn-success btn-lg rounded-circle"
-     data-aos="zoom-in"
-     data-aos-delay="1000">
-     <i class="fab fa-whatsapp"></i>
-  </a>
-  
-  <!-- Floating Booking Button (Bottom Left) -->
-  <a href="#booking" 
-     class="floating-btn booking-btn btn btn-primary btn-lg rounded-circle"
-     data-aos="zoom-in"
-     data-aos-delay="500">
-     <i class="fas fa-calendar-alt"></i>
-  </a>
+    <!-- Floating Buttons -->
+    <a href="https://wa.me/7903157520" 
+       class="floating-btn whatsapp-btn btn btn-success rounded-circle"
+       data-aos="zoom-in"
+       data-aos-delay="1000"
+       aria-label="Chat on WhatsApp">
+       <i class="fab fa-whatsapp"></i>
+    </a>
+    
+    <a href="#booking" 
+       class="floating-btn booking-btn btn btn-primary rounded-circle"
+       data-aos="zoom-in"
+       data-aos-delay="500"
+       aria-label="Book Appointment">
+       <i class="fas fa-calendar-alt"></i>
+    </a>
 
-  <!-- Scripts -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>
-    AOS.init({
-      duration: 1000,
-      once: true,
-      offset: 120
-    });
-
-    // Smooth scroll for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-          behavior: 'smooth'
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 120
         });
-      });
-    });
-  </script>
+
+        // Set current year
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
 </body>
 </html>
